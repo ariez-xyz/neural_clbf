@@ -1,7 +1,7 @@
 from typing import Tuple, Optional, Union
 
 import cvxpy as cp
-from cvxpylayers.torch import CvxpyLayer
+#from cvxpylayers.torch import CvxpyLayer
 import gurobipy as gp
 from gurobipy import GRB
 import numpy as np
@@ -120,9 +120,9 @@ class CLFController(Controller):
         variables = [u] + clf_relaxations
         parameters = Lf_V_params + Lg_V_params
         parameters += [V_param, u_ref_param, clf_relaxation_penalty_param]
-        self.differentiable_qp_solver = CvxpyLayer(
-            problem, variables=variables, parameters=parameters
-        )
+#        self.differentiable_qp_solver = CvxpyLayer(
+#            problem, variables=variables, parameters=parameters
+#        )
 
     def V_with_jacobian(self, x: torch.Tensor) -> Tuple[torch.Tensor, torch.Tensor]:
         """Computes the CLF value and its Jacobian
