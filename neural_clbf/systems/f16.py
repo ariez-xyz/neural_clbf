@@ -9,7 +9,7 @@ from neural_clbf.systems.control_affine_system import ControlAffineSystem
 from neural_clbf.systems.utils import Scenario
 
 try:
-    import neural_clbf.setup.aerobench as aerobench_loader  # type: ignore
+    import neural_clbf._setup.aerobench as aerobench_loader  # type: ignore
     from aerobench.highlevel.controlled_f16 import controlled_f16  # type: ignore
     from aerobench.examples.gcas.gcas_autopilot import GcasAutopilot  # type: ignore
     from aerobench.lowlevel.low_level_controller import (
