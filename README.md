@@ -29,6 +29,16 @@ pip install -e .
 pip install -r requirements.txt
 ```
 
+### Development
+If you are developing on a fork (e.g. to support Apple Silicon), configure your remote:
+```bash
+git remote add fork <YOUR_FORK_URL>
+```
+And push your changes using:
+```bash
+git push fork main
+```
+
 Next, make sure everything is installed correctly
 ```bash
 pytest .
