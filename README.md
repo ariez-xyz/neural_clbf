@@ -1,3 +1,24 @@
+# Purpose of this fork
+
+This fork supports an evaluation-first workflow on Apple Silicon, where some
+legacy dependencies are difficult to install:
+
+- `cvxpylayers` is not required for checkpoint loading/evaluation in this fork.
+- A lightweight `cvxpylayers` compatibility stub is registered in `neural_clbf/__init__.py` so older checkpoints referencing `cvxpylayers.torch.CvxpyLayer` can still be loaded.
+- The differentiable QP path (`self.differentiable_qp_solver`) is therefore disabled in this configuration.
+
+Implications:
+
+- Training workflows that require gradients through the QP layer are not supported in this fork.
+- Inference/evaluation works, but the CLF-QP correction layer is disabled. Control uses the nominal policy `u_nominal` (for pendulum this is the LQR policy), without a per-step QP projection enforcing `LfV + LgV u + lambda V <= 0`. Consequently:
+  - We still run the controller and the system can stabilize.
+  - But we are no longer forcing every action to satisfy the CLF decrease inequality.
+  - So occasional CLF increases can happen, and monitoring is needed to detect them rather than assuming the controller enforces them by construction.
+
+A potential alternative is to use a non-differentiable QP backend (e.g. CVXPY/Gurobi/OSQP) for CLF-QP inference.
+
+Original readme below.
+
 <div align="center">
 
 # Nonlinear Control Using Neural Lyapunov-Barrier Functions
