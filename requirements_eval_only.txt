@@ -1,0 +1,28 @@
+# Minimal requirements for EVALUATION ONLY (no training)
+# Avoids the problematic cvxpylayers/diffcp dependencies
+
+# Standard
+numpy
+matplotlib
+seaborn
+pandas
+
+# Learning libraries (for loading models)
+torch
+torchvision
+torchaudio
+pytorch-lightning<=1.8
+torchmetrics<=0.11
+
+# Optimization (for QP solving at runtime)
+cvxpy
+gurobipy  # Optional: comment out if no license, set disable_gurobi=True
+osqp
+ecos
+scs
+
+# Geometry
+shapely
+
+# Other
+scipy
