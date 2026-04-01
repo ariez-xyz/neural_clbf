@@ -8,8 +8,7 @@ setup(
     description="Toolkit for synthesizing neural CLBF controllers",
     author="Charles Dawson",
     author_email="cbd@mit.edu",
-    # REPLACE WITH YOUR OWN GITHUB PROJECT LINK
-    url="https://github.com/dawsonc/neural_clbf",
+    url="https://github.com/ariez-xyz/neural_clbf/",
     install_requires=[],
     packages=find_packages(),
 )
